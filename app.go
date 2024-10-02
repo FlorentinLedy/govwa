@@ -60,6 +60,7 @@ func main() {
 	router.GET("/", mw.LoggingMiddleware(mw.AuthCheck(indexHandler)))
 	router.GET("/index", mw.LoggingMiddleware(mw.DetectSQLMap(mw.AuthCheck(indexHandler))))
 
+	//nosemgrep
 	user.SetRouter(router)
 	sqlI.SetRouter(router)
 	xss.SetRouter(router)
@@ -68,13 +69,19 @@ func main() {
 	setup.SetRouter(router)
 	setting.SetRouter(router)
 
+	//this is a test nosemgrep test
+	//this is a test nosemgrep
+	//this is the last test
+	//no semgrep test
+	// nosemgrep
+
 	s := http.Server{
 		Addr:    fmt.Sprintf(":%s", config.Cfg.Webport),
 		Handler: router,
 	}
 
 	fmt.Printf("Server running at port %s\n", s.Addr)
-	fmt.Printf("Open this url %s on your browser to access GoVWA", config.Fullurl)
+	fmt.Printf("nosemgrep Open this url %s on your browser to access GoVWA", config.Fullurl)
 	fmt.Println("")
 	err := s.ListenAndServe()
 	if err != nil {
